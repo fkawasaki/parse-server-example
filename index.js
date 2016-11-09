@@ -22,12 +22,12 @@ var api = new ParseServer({
   },
   push: {
       android: {
-        senderId: '971068451885',
-        apiKey: 'AIzaSyD-GCZi25gksK9G_royw2BR7OsQBGRskuA'
+        senderId: process.env.ANDROID_SENDER_ID || '',
+        apiKey: process.env.ANDROID_API_KEY || '',
       },
       ios: {
-        pfx: 'hideoutclub.jp.prod.push.p12',
-        bundleId: 'jp.hideoutclub',
+        pfx: 'push.p12',
+        bundleId: process.env.BUNDLE_ID || '',
         production: true
       }
    }
