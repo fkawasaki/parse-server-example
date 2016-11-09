@@ -30,7 +30,22 @@ var api = new ParseServer({
         bundleId: process.env.BUNDLE_ID || '',
         production: true
       }
-   }
+   },
+verifyUserEmails: true,
+publicServerURL: process.env.SERVER_URL || 'http://localhost:1337/parse',
+appName: process.env.APP_NAME || '',
+emailAdapter: {
+    module: 'parse-server-simple-mailgun-adapter',
+    options: {
+      // The address that your emails come from
+      fromAddress: process.env.MG_FROM_ADDRESS || '',
+      // Your domain from mailgun.com
+      domain: process.env.MG_DOMAIN_NAME || '',
+      // Your API key from mailgun.com
+      apiKey: process.env.MG_API_KEY || '',
+    }
+  }
+
 });
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
 // If you wish you require them, you can set them as options in the initialization above:
