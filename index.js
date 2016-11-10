@@ -4,7 +4,7 @@
 var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
-
+var pushPath = path.resolve(__dirname, 'push.p12');
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
 if (!databaseUri) {
@@ -28,7 +28,7 @@ var api = new ParseServer({
         apiKey: process.env.ANDROID_API_KEY || '',
       },
       ios: {
-        pfx: process.env.PFX_PATH || '',
+        pfx: pushPath,
         bundleId: process.env.BUNDLE_ID || '',
         production: true
       }
