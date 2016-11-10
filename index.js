@@ -28,7 +28,7 @@ var api = new ParseServer({
       },
       ios: {
         pfx: 'push.p12',
-        bundleId: 'process.env.BUNDLE_ID' || '',
+        bundleId: process.env.BUNDLE_ID || '',
         production: true
       }
    },
