@@ -28,7 +28,7 @@ var api = new ParseServer({
         apiKey: process.env.ANDROID_API_KEY || '',
       },
       ios: {
-        pfx: './push.p12',
+        pfx: process.env.PFX_PATH || '',
         bundleId: process.env.BUNDLE_ID || '',
         production: true
       }
