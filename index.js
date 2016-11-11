@@ -28,7 +28,8 @@ var api = new ParseServer({
       },
       ios: {
         pfx: __dirname + '/' + process.env.PFX_NAME || '',
-        bundleId: process.env.BUNDLE_ID || '',
+        //bundleId: process.env.BUNDLE_ID || '',
+        bundleId: 'jp.hideoutclub',
         production: process.env.IS_PRODUCTION || false
       }
   },
