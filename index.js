@@ -22,14 +22,9 @@ var api = new ParseServer({
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
   },
   push: {
-      android: {
-        senderId: process.env.ANDROID_SENDER_ID || '',
-        apiKey: process.env.ANDROID_API_KEY || ''
-      },
       ios: {
         pfx: __dirname + '/' + process.env.PFX_NAME || '',
-        //bundleId: process.env.BUNDLE_ID || '',
-        bundleId: 'jp.hideoutclub',
+        bundleId: process.env.BUNDLE_ID || '',
         production: process.env.IS_PRODUCTION || false
       }
   },
