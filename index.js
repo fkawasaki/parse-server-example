@@ -24,7 +24,7 @@ var api = new ParseServer({
   push: {
       android: {
         senderId: process.env.ANDROID_SENDER_ID || '',
-        apiKey: process.env.ANDROID_API_KEY || '',
+        apiKey: process.env.ANDROID_API_KEY || ''
       },
       ios: {
         pfx: __dirname + '/' + process.env.PFX_NAME || '',
