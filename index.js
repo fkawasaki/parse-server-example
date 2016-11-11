@@ -27,17 +27,17 @@ var api = new ParseServer({
         apiKey: process.env.ANDROID_API_KEY || '',
       },
       ios: {
-        pfx: path.join(__dirname, process.env.PFX_NAME),
+        pfx: path.join(__dirname, process.env.PFX_NAME) || '',
         bundleId: process.env.BUNDLE_ID || '',
         production: true
       }
-   },
-verifyUserEmails: true,
-publicServerURL: process.env.SERVER_URL || 'http://localhost:1337/parse',
-appName: process.env.APP_NAME || '',
-emailAdapter: {
-    module: 'parse-server-simple-mailgun-adapter',
-    options: {
+  },
+  verifyUserEmails: true,
+  publicServerURL: process.env.SERVER_URL || 'http://localhost:1337/parse',
+  appName: process.env.APP_NAME || '',
+  emailAdapter: {
+      module: 'parse-server-simple-mailgun-adapter',
+      options: {
       // The address that your emails come from
       fromAddress: process.env.MG_FROM_ADDRESS || '',
       // Your domain from mailgun.com
