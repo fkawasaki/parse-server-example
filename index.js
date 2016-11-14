@@ -4,7 +4,6 @@
 var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
-
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
 if (!databaseUri) {
@@ -14,13 +13,52 @@ if (!databaseUri) {
 var api = new ParseServer({
   databaseURI: databaseUri || 'mongodb://localhost:27017/dev',
   cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
+  verbose: false,
   appId: process.env.APP_ID || 'myAppId',
   masterKey: process.env.MASTER_KEY || '', //Add your master key here. Keep it secret!
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
+  clientKey: process.env.CLIENT_KEY || '',
+  restAPIKey: process.env.REST_API_KEY || '',
+  javascriptKey: process.env.JAVASCRIPT_KEY || '',
+  dotNetKey: process.env.DOT_NET_KEY || '',
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
+  },
+  push: {
+      android: {
+        senderId: process.env.ANDROID_SENDER_ID || '',
+        apiKey: process.env.ANDROID_API_KEY || ''
+      },
+      ios: {
+        pfx: __dirname + '/' + process.env.PFX_NAME || '',
+        passphrase: '',
+        bundleId: process.env.BUNDLE_ID || '',
+        production: process.env.IS_PRODUCTION || false
+      }
+  },
+  verifyUserEmails: true,
+  publicServerURL: process.env.SERVER_URL || 'http://localhost:1337/parse',
+  appName: process.env.APP_NAME || '',
+  emailAdapter: {
+      module: 'parse-server-simple-mailgun-adapter',
+      options: {
+      // The address that your emails come from
+      fromAddress: process.env.MG_FROM_ADDRESS || '',
+      // Your domain from mailgun.com
+      domain: process.env.MG_DOMAIN_NAME || '',
+      // Your API key from mailgun.com
+      apiKey: process.env.MG_API_KEY || '',
+    }
   }
+
 });
+
+console.log('pfx path:');
+console.log(__dirname + '/' + process.env.PFX_NAME );
+console.log('path.join(__dirname, process.env.PFX_NAME) ');
+console.log(path.join(__dirname, process.env.PFX_NAME));
+
+
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
 // If you wish you require them, you can set them as options in the initialization above:
 // javascriptKey, restAPIKey, dotNetKey, clientKey
