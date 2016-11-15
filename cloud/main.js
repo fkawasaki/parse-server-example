@@ -2,7 +2,8 @@
 Parse.Cloud.define('hello', function(req, res) {
   res.success('Hi');
 });
-
+ // vddar message = request.params.message;
+Parse.Cloud.useMasterKey();
 Parse.Cloud.define('push', function(req, res) {
   res.success('called push.');
   var query = new Parse.Query(Parse.User);
