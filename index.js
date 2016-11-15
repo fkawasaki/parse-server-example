@@ -30,7 +30,8 @@ var api = new ParseServer({
         apiKey: process.env.ANDROID_API_KEY || ''
       },
       ios: {
-        pfx: __dirname + '/' + process.env.PFX_NAME || '',
+        //pfx: __dirname + '/' + process.env.PFX_NAME || '',
+        pfx: process.env.PFX_NAME || '',
         passphrase: '',
         bundleId: process.env.BUNDLE_ID || '',
         production: process.env.IS_PRODUCTION || false
