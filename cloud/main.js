@@ -3,12 +3,11 @@ Parse.Cloud.define('hello', function(req, res) {
   res.success('Hi');
 });
  // vddar message = request.params.message;
-Parse.Cloud.useMasterKey();
 Parse.Cloud.define('push', function(req, res) {
   res.success('called push.');
   var query = new Parse.Query(Parse.User);
  var message = 'test message from cloud code.';
-  query.equalTo('objectId', 'UZtbLFXGLn');
+  query.equalTo('objectId', 'pjOKjRFYVA');
 
   Parse.Push.send({
     where: query,
@@ -26,7 +25,7 @@ Parse.Cloud.define('push', function(req, res) {
     //Oops
     res.success('invalid');
     }
-  });
+  },{ useMasterKey: true });
 });
 
 Parse.Cloud.define('pushTest', function(request,response){

@@ -31,7 +31,9 @@ var api = new ParseServer({
       },
       ios: {
         pfx: __dirname + '/' + process.env.PFX_NAME || '',
-        bundleId: process.env.BUNDLE_ID || ''
+        passphrase: '',
+        bundleId: process.env.BUNDLE_ID || '',
+        production: process.env.IS_PRODUCTION || false
       }
   },
   verifyUserEmails: true,
