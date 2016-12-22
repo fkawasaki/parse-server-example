@@ -27,6 +27,7 @@ var api = new ParseServer({
     process.env.S3_ACCESS_KEY || '',
     process.env.S3_SECRET_KEY || '',
     process.env.S3_BUCKET || '',
+    process.env.S3_REGION || '',
     {directAccess: true}
   ),
   liveQuery: {
