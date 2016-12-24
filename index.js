@@ -5,7 +5,6 @@ var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
-var S3Adapter = require('parse-server').S3Adapter;
 
 if (!databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
@@ -23,12 +22,6 @@ var api = new ParseServer({
   javascriptKey: process.env.JAVASCRIPT_KEY || '',
   fileKey: process.env.FILE_KEY || '',
   dotNetKey: process.env.DOT_NET_KEY || '',
-  filesAdapter: new S3Adapter(
-    process.env.S3_ACCESS_KEY || '',
-    process.env.S3_SECRET_KEY || '',
-    process.env.S3_BUCKET || '',
-    {directAccess: true}
-  ),
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
   },
