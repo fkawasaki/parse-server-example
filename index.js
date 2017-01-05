@@ -45,7 +45,7 @@ var api = new ParseServer({
         production: process.env.IS_PRODUCTION || false
       }
   },
-  verifyUserEmails: true,
+  verifyUserEmails: false,
   publicServerURL: process.env.SERVER_URL || 'http://localhost:1337/parse',
   appName: process.env.APP_NAME || '',
   emailAdapter: {
