@@ -11,6 +11,13 @@ if (!databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
 }
 
+var path = require('path');
+  opts.push.ios = {
+    // The filename of private key and certificate in PFX 
+    pfx: path.join(__dirname, process.env.PFX_NAME),
+    process.env.BUNDLE_ID
+}
+
 var api = new ParseServer({
   databaseURI: databaseUri || 'mongodb://localhost:27017/dev',
   cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
@@ -36,13 +43,6 @@ var api = new ParseServer({
       android: {
         senderId: process.env.ANDROID_SENDER_ID || '',
         apiKey: process.env.ANDROID_API_KEY || ''
-      },
-      ios: {
-        //pfx: __dirname + '/' + process.env.PFX_NAME || '',
-        pfx: '/app/' + process.env.PFX_NAME || '',
-        passphrase: '',
-        bundleId: process.env.BUNDLE_ID || '',
-        production: process.env.IS_PRODUCTION || false
       }
   },
   verifyUserEmails: false,
